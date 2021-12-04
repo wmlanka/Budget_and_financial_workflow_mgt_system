@@ -1,0 +1,33 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE hibernate-configuration PUBLIC "-//Hibernate/Hibernate Configuration DTD 3.0//EN" "http://www.hibernate.org/dtd/hibernate-configuration-3.0.dtd">
+
+<hibernate-configuration>    
+   
+  <session-factory>
+         
+		<property name="dialect">org.hibernate.dialect.MySQLDialect</property>
+      	<property name="show_sql">true</property>
+      	<mapping class="com.finance.domain.Stakeholder" />
+      	<mapping class="com.finance.domain.LedgerAccount" />
+      	<mapping class="com.finance.domain.User" />
+      	<mapping class="com.finance.domain.ApprovalDocument" />
+      	<mapping class="com.finance.domain.AccessGroup" />
+      	<mapping class="com.finance.domain.Budget" />
+      	<mapping class="com.finance.domain.ActionCode" />
+      	<mapping class="com.finance.domain.BudgetCode" />
+      	<mapping class="com.finance.domain.SourceDocument" />
+      	<mapping class="com.finance.domain.SourceDocApprovals" />     
+      	<mapping class="com.finance.domain.TempSourceDocApprovals" /> 
+      	<mapping class="com.finance.domain.DocumentUpload" /> 
+      	<mapping class="com.finance.domain.Location"/> 
+      	<mapping class="com.finance.domain.PaymentRequest"/>   
+      	<mapping class="com.finance.domain.TempPREntries"/> 
+      	<mapping class="com.finance.domain.PREntries"/>
+      	<mapping class="com.finance.domain.PRStakeholderSourceDoc"/>
+      	<mapping class="com.finance.domain.PRStatus"/>
+      	<mapping class="com.finance.domain.Serial"/> 
+      	<mapping class="com.finance.domain.ApprovalWorkflow"/>
+      	<!-- <mapping class="com.finance.domain.CoreAccount"/> -->
+  </session-factory>
+  
+</hibernate-configuration>

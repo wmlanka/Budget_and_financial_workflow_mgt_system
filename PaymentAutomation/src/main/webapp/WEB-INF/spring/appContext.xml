@@ -1,0 +1,200 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<beans xmlns="http://www.springframework.org/schema/beans"
+    xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+    xmlns:tx="http://www.springframework.org/schema/tx"
+    xsi:schemaLocation="http://www.springframework.org/schema/beans
+        http://www.springframework.org/schema/beans/spring-beans.xsd
+        http://www.springframework.org/schema/tx
+        http://www.springframework.org/schema/tx/spring-tx.xsd">
+        
+    <!-- Login --> 
+    <bean id="loginActionBean" class="com.finance.action.LoginAction">
+        <property name="loginDAO" ref="loginDAO" />
+        <property name="locationDAO" ref="locationDAO"/>
+    </bean>  
+    
+    <bean id="logoutActionBean" class="com.finance.action.LogoutAction">
+    </bean>    
+    
+    <bean id="loginDAO" class="com.finance.daoImpl.LoginDAOImpl"/>
+     
+    <bean id="userDAO" class="com.finance.daoImpl.UserDAOImpl" />
+    
+    <!-- Stakeholder -->
+    <bean id="stakeholderActionBean" class="com.finance.action.StakeholderAction">
+        <property name="stakeholderDAO" ref="stakeholderDAO" />
+    </bean>
+ 
+    <bean id="stakeholderDAO" class="com.finance.daoImpl.StakeholderDAOImpl">
+        <constructor-arg>
+            <ref bean="sessionFactory" />
+        </constructor-arg>
+    </bean>
+
+    <!-- ledger Account -->
+    <bean id="ledgerAccountActionBean" class="com.finance.action.LedgerAccountAction">
+        <property name="ledgerAccountDAO" ref="ledgerAccountDAO" />
+    </bean>
+    
+    <bean id="ledgerAccountDAO" class="com.finance.daoImpl.LedgerAccountDAOImpl"/>
+    
+    <!-- Approval Action -->
+  	<bean id="approvalDocActionBean" class="com.finance.action.ApprovalDocAction">
+        <property name="approvalDocumentDAO" ref="approvalDocumentDAO" />
+    </bean>
+    
+    <bean id="approvalDocumentDAO" class="com.finance.daoImpl.ApprovalDocumentDAOImpl"/>
+    
+    <!-- Budget Action -->
+  	<bean id="budgetActionBean" class="com.finance.action.BudgetAction">
+        <property name="budgetDAO" ref="budgetDAO" />
+        <property name="actionCodeDAO" ref="actionCodeDAO" />
+        <property name="budgetCodeDAO" ref="budgetCodeDAO" />
+        <property name="approvalDocumentDAO" ref="approvalDocumentDAO" />
+    </bean>
+    
+    <bean id="budgetDAO" class="com.finance.daoImpl.BudgetDAOImpl"/>
+    
+    <!-- Budget Report -->
+    <bean id="budgetInquiryActionBean" class="com.finance.action.BudgetInquiryAction">
+        <property name="budgetDAO" ref="budgetDAO" />
+        <property name="actionCodeDAO" ref="actionCodeDAO"/>
+        <property name="budgetCodeDAO" ref="budgetCodeDAO"/>
+    </bean>
+    
+    <bean id="actionCodeDAO" class="com.finance.daoImpl.ActionCodeDAOImpl"/>
+    
+    <bean id="ajaxActionBean" class="com.finance.action.AjaxAction">
+        <property name="actionCodeDAO" ref="actionCodeDAO"/>
+        <property name="budgetCodeDAO" ref="budgetCodeDAO"/>
+        <property name="approvalDocumentDAO" ref="approvalDocumentDAO"/>
+        <property name="sourceDocumentDAO" ref="sourceDocumentDAO"/>
+        <property name="budgetDAO" ref="budgetDAO"/>
+    </bean> 
+    
+    <bean id="budgetCodeDAO" class="com.finance.daoImpl.BudgetCodeDAOImpl"/> 
+    
+    <!-- Action Code Action -->
+  	<bean id="actionCodeActionBean" class="com.finance.action.ActionCodeAction">
+  	    <property name="actionCodeDAO" ref="actionCodeDAO"/>
+    </bean>
+    
+    <!-- Source Document Action -->
+  	<bean id="sourceDocActionBean" class="com.finance.action.SourceDocumentAction">
+   	    <property name="stakeholderDAO" ref="stakeholderDAO"/>
+   	    <property name="sourceDocumentDAO" ref="sourceDocumentDAO"/>
+ 	</bean>
+ 	 	
+ 	<bean id="sourceDocumentDAO" class="com.finance.daoImpl.SourceDocumentDAOImpl">
+ 		<property name="approvalDocumentDAO" ref="approvalDocumentDAO"/>
+ 	</bean>  
+                
+    <!-- BaseDAOSupport -->
+    <bean id="baseDAO" class="com.finance.dao.BaseDAOSupport">
+           <property name="sessionFactory" ref="sessionFactory"/>
+    </bean>
+       
+    <!-- Payment Summary Report -->
+    <bean id="paymentInquiryActionBean" class="com.finance.action.PaymentInquiryAction">
+    	<property name="paymentRequestDAO" ref="paymentRequestDAO"/>
+    	<property name="locationDAO" ref="locationDAO"/>
+    	<property name="stakeholderDAO" ref="stakeholderDAO"/>
+    </bean>
+    
+    <!-- Daily Reports -->
+    <bean id="dailyReportActionBean" class="com.finance.action.DailyReportAction">
+        <property name="paymentRequestDAO" ref="paymentRequestDAO"/>
+    	<property name="locationDAO" ref="locationDAO"/>
+    </bean>
+    
+    <!-- Payment Request -->
+    <bean id="payRequestActionBean" class="com.finance.action.PaymentRequestAction">
+     	<property name="paymentRequestDAO" ref="paymentRequestDAO"/>
+     	<property name="actionCodeDAO" ref="actionCodeDAO"/>
+     	<property name="budgetCodeDAO" ref="budgetCodeDAO"/>
+     	<property name="budgetDAO" ref="budgetDAO"/>
+    	<property name="stakeholderDAO" ref="stakeholderDAO"/>
+   	    <property name="sourceDocumentDAO" ref="sourceDocumentDAO"/>
+   	    <property name="ledgerAccountDAO" ref="ledgerAccountDAO" />
+ 	</bean>
+ 	
+ 	<bean id="paymentRequestDAO" class="com.finance.daoImpl.PaymentRequestDAOImpl">
+ 		<property name="budgetDAO" ref="budgetDAO"/>
+ 	</bean>  
+    
+     <!-- Budget Code Action -->
+  	<bean id="budgetCodeActionBean" class="com.finance.action.BudgetCodeAction">
+  	    <property name="actionCodeDAO" ref="actionCodeDAO"/>
+  	    <property name="budgetCodeDAO" ref="budgetCodeDAO"/>
+    </bean>
+    
+    <bean id="excelActionBean" class="com.finance.action.ReportExcelAction">
+    	<property name="budgetDAO" ref="budgetDAO"/>
+    </bean>
+        
+    <!-- Budget Report Action -->
+<!--   	<bean id="budgetReportActionBean" class="com.finance.action.BudgetReportAction">
+ 	</bean> -->
+ 	
+ 	<!-- Jasper Report Action -->
+  <!-- 	<bean id="jasperReportActionBean" class="com.finance.action.JasperReportAction">
+ 	</bean> -->
+ 	
+ 	<!-- PR Explorer -->
+ 	<bean id="prExplorerActionBean" class="com.finance.action.PRExplorerAction">
+ 	     	<property name="paymentRequestDAO" ref="paymentRequestDAO"/>
+ 	     	<property name="stakeholderDAO" ref="stakeholderDAO"/>
+ 	     	<property name="locationDAO" ref="locationDAO"/>
+    </bean>
+    
+    <bean id="locationDAO" class="com.finance.daoImpl.LocationDAOImpl"/> 
+    
+    <!-- Dashboard -->
+ 	<bean id="dashboardActionBean" class="com.finance.action.DashboardAction">
+ 		<property name="paymentRequestDAO" ref="paymentRequestDAO"/>
+ 		<property name="dashboardDAO" ref="dashboardDAO"/>
+    </bean>
+    
+    
+    <!-- Chart -->
+    <bean id="dashboardChartActionBean" class="com.finance.action.DashboardChartAction">
+ 		<property name="dashboardDAO" ref="dashboardDAO"/>
+    </bean>
+    
+    <bean id="dashboardDAO" class="com.finance.daoImpl.DashboardDAOImpl"/>
+    
+    <!-- Chart -->
+    <bean id="chartActionBean" class="com.finance.action.ChartAction">
+    	<property name="budgetDAO" ref="budgetDAO"/>
+    </bean>
+    
+    <!-- user -->
+    <bean id="userActionBean" class="com.finance.action.UserManageAction">
+    	<property name="userDAO" ref="userDAO"/>
+    </bean>
+        
+    <!-- Session -->
+    <bean id="sessionFactory" class="org.springframework.orm.hibernate4.LocalSessionFactoryBean">
+        <property name="dataSource" ref="dataSource" />
+        <property name="hibernateProperties">
+		    <value>
+		            hibernate.dialect=org.hibernate.dialect.MySQLDialect
+		    </value>
+		</property>
+		<property name="configLocation" value="classpath:hibernate.cfg.xml" />
+    </bean>
+     
+    <bean id="dataSource" class="org.apache.commons.dbcp2.BasicDataSource" destroy-method="close">
+        <property name="driverClassName" value="com.mysql.jdbc.Driver" />
+        <property name="url" value="jdbc:mysql://localhost:3306/finance_system" />
+        <property name="username" value="root" />
+        <property name="password" value="root" />
+    </bean>
+ 
+    <tx:annotation-driven />
+        
+    <bean id="transactionManager" class="org.springframework.orm.hibernate4.HibernateTransactionManager">
+        <property name="sessionFactory" ref="sessionFactory" />
+    </bean>
+         
+</beans>

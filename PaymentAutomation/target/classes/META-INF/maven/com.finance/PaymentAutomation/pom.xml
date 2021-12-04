@@ -1,0 +1,287 @@
+<project xmlns="http://maven.apache.org/POM/4.0.0" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:schemaLocation="http://maven.apache.org/POM/4.0.0 https://maven.apache.org/xsd/maven-4.0.0.xsd">
+  <modelVersion>4.0.0</modelVersion>
+  <groupId>com.finance</groupId>
+  <artifactId>PaymentAutomation</artifactId>
+  <version>0.0.1-SNAPSHOT</version>
+  
+  <build>
+	<plugins>
+		<plugin>
+		    <groupId>org.apache.maven.plugins</groupId>
+		    <artifactId>maven-compiler-plugin</artifactId>
+		    <version>3.8.0</version>
+		    <configuration>
+		        <release>11</release>
+		    </configuration>
+		</plugin>	
+
+	</plugins>
+	</build>
+  
+    <!-- Properties for versions of Java and Spring: -->
+	<properties>
+    	<maven.compiler.release>11</maven.compiler.release>
+	    <org.springframework-version>4.1.4.RELEASE</org.springframework-version>
+	    <org.strutsframework-version>2.3.20</org.strutsframework-version>
+    	<org.hibernateframework-version>4.3.8.Final</org.hibernateframework-version>
+    	<org.mysqlconnector-version>5.1.34</org.mysqlconnector-version>
+	</properties>
+	
+
+
+	<dependencies>
+	    <!-- Dependencies for Spring framework: -->
+		<dependency>
+		    <groupId>org.springframework</groupId>
+		    <artifactId>spring-context</artifactId>
+		    <version>${org.springframework-version}</version>
+		</dependency>
+		 
+		<dependency>
+		    <groupId>org.springframework</groupId>
+		    <artifactId>spring-context-support</artifactId>
+		    <version>${org.springframework-version}</version>
+		</dependency>
+		 
+	 <!-- 	<dependency>
+		    <groupId>org.springframework</groupId>
+		    <artifactId>spring-webmvc</artifactId>
+		    <version>${org.springframework-version}</version>
+		</dependency> -->
+		
+		<dependency>
+		    <groupId>org.springframework</groupId>
+		    <artifactId>spring-orm</artifactId>
+		    <version>${org.springframework-version}</version>
+		    <type>jar</type>
+		    <scope>compile</scope>
+		 </dependency>
+		 
+		 <!-- for org.springframework.web.context.ContextLoaderListener -->
+		<dependency>
+		    <groupId>org.springframework</groupId>
+		    <artifactId>spring-web</artifactId>
+		    <version>4.1.4.RELEASE</version>
+		</dependency>
+		 
+		
+		<!-- Dependency for Struts 2 framework: -->
+		<dependency>
+		    <groupId>org.apache.struts</groupId>
+		    <artifactId>struts2-core</artifactId>
+		    <version>${org.strutsframework-version}</version>
+		    <exclusions>
+		    	<exclusion>
+          			<groupId>javassist</groupId>
+          			<artifactId>javassist</artifactId>
+        		</exclusion>
+        	</exclusions>
+		</dependency>
+		
+		<!-- Struts 2 Dojo Ajax Tags -->
+	    <dependency>
+	      <groupId>org.apache.struts</groupId>
+	      <artifactId>struts2-dojo-plugin</artifactId>
+	      <version>${org.strutsframework-version}</version>
+	    </dependency>
+	    
+	    <!--  Apache Struts JQuery Plugin Dependency -->
+    <dependency>
+      <groupId>com.jgeppert.struts2.jquery</groupId>
+      <artifactId>struts2-jquery-plugin</artifactId>
+      <version>4.0.3</version>
+    </dependency>
+    
+    <!-- https://mvnrepository.com/artifact/org.apache.struts/struts2-json-plugin -->
+	<dependency>
+	    <groupId>org.apache.struts</groupId>
+	    <artifactId>struts2-json-plugin</artifactId>
+	    <version>${org.strutsframework-version}</version>
+	</dependency>  
+		<!-- <dependency>
+		    <groupId>org.apache.struts</groupId>
+		    <artifactId>struts2-core</artifactId>
+		    <version>2.3.16.3</version>
+		</dependency> -->
+		
+		<!-- Dependency for Spring Plugin: -->
+		<dependency>
+		    <groupId>org.apache.struts</groupId>
+		    <artifactId>struts2-spring-plugin</artifactId>
+		    <version>${org.strutsframework-version}</version>
+		</dependency>
+<!-- 		<dependency>
+		    <groupId>org.apache.struts</groupId>
+		    <artifactId>struts2-spring-plugin</artifactId>
+		    <version>2.3.16.3</version>
+		</dependency> -->
+		
+		<!-- Dependencies for Hibernate ORM framework: -->
+		<dependency>
+		    <groupId>org.hibernate</groupId>
+		    <artifactId>hibernate-core</artifactId>
+		    <version>${org.hibernateframework-version}</version>
+		</dependency>
+		
+		<!-- Dependency for Apache Commons DBCP (database connection pooling): -->
+		<dependency>
+		    <groupId>org.apache.commons</groupId>
+		    <artifactId>commons-dbcp2</artifactId>
+		    <version>2.0</version>
+		</dependency>
+		
+		<!-- Dependency for MySQL Connector-Java library: -->
+		<dependency>
+		    <groupId>mysql</groupId>
+		    <artifactId>mysql-connector-java</artifactId>
+		    <version>${org.mysqlconnector-version}</version>
+		</dependency>
+		
+		<!-- Dependency for Java Servlet & JSP (for compile only): -->
+		<dependency>
+		    <groupId>javax.servlet</groupId>
+		    <artifactId>javax.servlet-api</artifactId>
+		    <version>3.1.0</version>
+		    <scope>provided</scope>
+		</dependency>
+		 
+		<dependency>
+		    <groupId>javax.servlet.jsp</groupId>
+		    <artifactId>javax.servlet.jsp-api</artifactId>
+		    <version>2.3.1</version>
+		    <scope>provided</scope>
+		</dependency>
+		
+		<!-- Displaytag -->
+		<dependency>
+			<groupId>displaytag</groupId>
+			<artifactId>displaytag</artifactId>
+			<version>1.2</version>
+		</dependency>
+		
+		<!-- JSTL -->
+		<dependency>
+		    <groupId>javax.servlet</groupId>
+		    <artifactId>jstl</artifactId>
+		    <version>1.2</version>
+		    <scope>runtime</scope>
+		</dependency>
+		 
+		<dependency>
+		    <groupId>taglibs</groupId>
+		    <artifactId>standard</artifactId>
+		    <version>1.1.2</version>
+		    <scope>runtime</scope>
+		</dependency>
+		
+		<!-- struts2-bootstrap-plugin.jar -->
+		<!-- <dependency>
+	        <groupId>com.jgeppert.struts2.bootstrap</groupId>
+	        <artifactId>struts2-bootstrap-plugin</artifactId>
+	        <version>4.0.0</version>
+    	</dependency> -->
+<!--     	
+    	<dependency>
+			<groupId>net.sf.jasperreports</groupId>
+			<artifactId>jasperreports-metadata</artifactId>
+			<version>6.17.0</version>
+		</dependency>
+		Thanks for using https://jar-download.com -->
+    	
+		<!-- JXLS -->
+		
+	<!-- 	 <dependency>
+            <groupId>org.jxls</groupId>
+            <artifactId>jxls-poi</artifactId>
+            <version>1.0.13</version>
+        </dependency> -->
+        <!-- https://mvnrepository.com/artifact/org.jxls/jxls-poi -->
+	<!-- 	<dependency>
+		    <groupId>org.jxls</groupId>
+		    <artifactId>jxls-poi</artifactId>
+		    <version>2.10.0</version>
+		</dependency> -->
+		
+		<!-- https://mvnrepository.com/artifact/org.apache.poi/poi -->
+		<dependency>
+		    <groupId>org.apache.poi</groupId>
+		    <artifactId>poi</artifactId>
+		    <version>3.2-FINAL</version>
+		</dependency>
+		
+        
+        <dependency>
+            <groupId>org.jxls</groupId>
+            <artifactId>jxls-jexcel</artifactId>
+            <version>1.0.6</version>
+        </dependency>
+        <dependency>
+            <groupId>org.jxls</groupId>
+            <artifactId>jxls</artifactId>
+            <version>2.4.2</version>
+        </dependency>
+      
+        
+ 		<!-- <dependency>
+		    <groupId>org.jxls</groupId>
+		    <artifactId>jxls</artifactId>
+		    <version>2.9.0</version>
+		</dependency> -->
+ 		<dependency>
+		    <groupId>net.sf.jxls</groupId>
+		    <artifactId>jxls-core</artifactId>
+		    <version>0.9.8</version>
+		</dependency>
+	<!-- 	<dependency>
+		    <groupId>org.jxls</groupId>
+		    <artifactId>jxls</artifactId>
+		    <version>2.4.0</version>
+		</dependency> -->
+<!-- 		<dependency>
+		    <groupId>org.jxls</groupId>
+		    <artifactId>jxls-poi</artifactId>
+		    <version>1.0.9</version>
+		</dependency> -->
+		<!-- Jar required for extended command -->
+<!-- 		<dependency>
+		    <groupId>org.jxls</groupId>
+		    <artifactId>jxls-jexcel</artifactId>
+		    <version>1.0.6</version>
+		</dependency> -->
+		 <!-- jxls import Excel -->
+		<dependency>
+		    <groupId>net.sf.jxls</groupId>
+		    <artifactId>jxls-reader</artifactId>
+		    <version>1.0.6</version>
+		</dependency>
+		
+	        <dependency>
+            <groupId>log4j</groupId>
+            <artifactId>log4j</artifactId>
+            <version>1.2.17</version>
+        </dependency>
+        <dependency>
+            <groupId>org.slf4j</groupId>
+            <artifactId>slf4j-log4j12</artifactId>
+            <version>1.7.25</version>
+            <scope>test</scope>
+        </dependency>
+        <dependency>
+            <groupId>org.slf4j</groupId>
+            <artifactId>slf4j-api</artifactId>
+            <version>1.7.25</version>
+        </dependency>
+        
+
+		<!-- https://mvnrepository.com/artifact/com.itextpdf/itextpdf -->
+	<!-- 	<dependency>
+		    <groupId>com.itextpdf</groupId>
+		    <artifactId>itextpdf</artifactId>
+		    <version>5.3.4</version>
+		</dependency> -->
+
+	</dependencies>
+	
+
+
+</project>

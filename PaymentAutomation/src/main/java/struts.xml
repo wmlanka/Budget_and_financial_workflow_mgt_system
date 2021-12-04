@@ -1,0 +1,694 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE struts PUBLIC
+    "-//Apache Software Foundation//DTD Struts Configuration 2.0//EN"
+    "http://struts.apache.org/dtds/struts-2.0.dtd">
+ 
+<struts>
+	<constant name="struts.custom.i18n.resources" value="globalString" />
+
+
+    <package name="PaymentAutomation" extends="json-default">
+         
+        <action name="loginAction" class="loginActionBean">
+            <!--<result name="input">/Signup.jsp</result> -->
+            <result name="success">/Dashboard.jsp</result>
+              <result name="input">
+                <param name="location">Signup.jsp</param>
+            </result>            
+        </action>
+        
+        <action name="logoutAction" class="logoutActionBean">
+            <result name="success">/Signup.jsp</result>
+              <result name="input">
+                <param name="location">Dashboard.jsp</param>
+            </result>             
+        </action>
+        
+        
+        <!-- Stakeholder -->       
+        <action name="stakeholderAction" class="stakeholderActionBean">
+            <!-- <result name="SUCCESS">/Stakeholder.jsp</result> -->
+            <result name="success">
+                <param name="location">Stakeholder.jsp</param>
+            </result> 
+            <result name="error">Signup.jsp</result>
+            <result name="input">
+                <param name="location">Test.jsp</param>
+            </result>   
+        </action>
+        
+        <action name="addStakeholderAction" class="stakeholderActionBean" method="create">
+            <result name="input" >/AddStakeholder.jsp</result>   
+            <result name="success" type="redirect"> 
+    			<param name="location">refreshStakeholderAction.action</param> 
+    		</result> 
+        </action>
+        
+        <action name="editStakeholderAction" class="stakeholderActionBean" method="update">
+            <result name="input" >/AddStakeholder.jsp</result>  
+            <result name="success" type="redirect"> 
+    			<param name="location">refreshStakeholderAction.action</param> 
+    		</result>   
+        </action>
+        
+        <action name="deleteStakeholderAction" class="stakeholderActionBean" method="delete">
+            <result name="input" >Stakeholder.jsp</result> <!-- stakeholderAction.action -->
+            <result name="success" type="redirect"> 
+    			<param name="location">refreshStakeholderAction.action</param> 
+    		</result> 
+        </action>
+        
+        <action name="refreshStakeholderAction" class="stakeholderActionBean" method="refresh">
+            <result name="success">
+                <param name="location">Stakeholder.jsp</param>
+            </result>  
+        </action>
+        
+        <action name="resetStakeholderAction" class="stakeholderActionBean" method="reset">
+            <result name="input">
+                <param name="location">AddStakeholder.jsp</param>
+            </result>
+            <param name="clear">YES</param>
+            <!-- <result name="input" >/AddStakeholder.jsp</result> -->
+        </action>
+        
+        <!-- Ledget Account -->
+        <action name="ledgerAccountAction" class="ledgerAccountActionBean">
+            <result name="success">
+                <param name="location">LedgerAccount.jsp</param>
+            </result>
+            <result name="input">
+                <param name="location">LedgerAccount.jsp</param>
+            </result>  
+            <result name="error">Signup.jsp</result>  
+            
+        </action>
+        
+		<action name="addLedgerAccountAction" class="ledgerAccountActionBean" method="create">
+	            <!-- <result name="input" >/AddLedgerAccount.jsp</result>  -->  
+	            <result name="input" >
+                	<param name="location">AddLedgerAccount.jsp</param>
+            	</result>
+	            <result name="success" type="redirect"> 
+	    			<param name="location">refreshLedgerAccountAction.action</param> 
+	    		</result>
+	    		<result name="error">Signup.jsp</result> 
+	    		 <interceptor-ref name="params"/>
+			     <interceptor-ref name="validation"/>
+			     <interceptor-ref name="workflow"/> 
+	    </action>
+	    
+	    <action name="editLedgerAccountAction" class="ledgerAccountActionBean" method="update">
+             <result name="input" >
+               	<param name="location">AddLedgerAccount.jsp</param>
+           	 </result>  
+             <result name="success" type="redirect"> 
+    			<param name="location">refreshLedgerAccountAction.action</param> 
+    		</result>   
+        </action>
+        
+        <action name="deleteLedgerAccountAction" class="ledgerAccountActionBean" method="delete">  
+           	 <!-- <result name="input" >ledgerAccountAction.action</result> -->
+           	 <result name="input" >LedgerAccount.jsp</result>
+             <result name="success" type="redirect"> 
+    			<param name="location">refreshLedgerAccountAction.action</param> 
+    		</result>
+        </action>
+        
+        <action name="refreshLedgerAccountAction" class="ledgerAccountActionBean" method="refresh">
+            <result name="success">
+                <param name="location">LedgerAccount.jsp</param>
+            </result>  
+        </action>
+        
+        <action name="resetLedgerAccountAction" class="ledgerAccountActionBean" method="reset">
+            <result name="input">
+                <param name="location">AddLedgerAccount.jsp</param>
+            </result>
+            <param name="clear">YES</param>
+        </action>
+        
+        <!-- Approval Document -->
+        <action name="approvalDocAction" class="approvalDocActionBean">
+            <result name="success">
+                <param name="location">ApprovalDocument.jsp</param>
+            </result>  
+            <result name="input">
+                <param name="location">ApprovalDocument.jsp</param>
+            </result>  
+            <result name="error">Signup.jsp</result>  
+        </action>
+        
+		<action name="addApprovalDocAction" class="approvalDocActionBean" method="create">
+	            <result name="input" >
+                	<param name="location">AddApprovalDocument.jsp</param>
+            	</result>
+	            <result name="success" type="redirect"> 
+	    			<param name="location">refreshApprovalDocAction.action</param> 
+	    		</result>
+	    		<result name="error">Signup.jsp</result>  
+ 	    		 <!--<interceptor-ref name="params"/>
+			     <interceptor-ref name="validation"/>
+			     <interceptor-ref name="workflow"/> --> 
+	    </action>
+	    
+	    <action name="editApprovalDocAction" class="approvalDocActionBean" method="update">
+             <result name="input" >
+               	<param name="location">AddApprovalDocument.jsp</param>
+           	 </result>  
+             <result name="success" type="redirect"> 
+    			<param name="location">refreshApprovalDocAction.action</param> 
+    		</result>   
+        </action>
+        
+        <action name="deleteApprovalDocAction" class="approvalDocActionBean" method="delete">  
+           	 <result name="input" >ApprovalDocument.jsp</result><!-- approvalDocAction.action -->
+             <result name="success" type="redirect"> 
+    			<param name="location">refreshApprovalDocAction.action</param> 
+    		</result>
+        </action>
+        
+        <action name="refreshApprovalDocAction" class="approvalDocActionBean" method="refresh">
+            <result name="success">
+                <param name="location">ApprovalDocument.jsp</param>
+            </result>  
+        </action>
+        
+        <action name="resetApprovalDocAction" class="approvalDocActionBean" method="reset">
+            <result name="input">
+                <param name="location">AddApprovalDocument.jsp</param>
+            </result>
+            <param name="clear">YES</param>
+        </action>
+    
+        <!-- Budget -->
+        <action name="budgetAction" class="budgetActionBean">
+            <result name="success">
+                <param name="location">Budget.jsp</param>
+            </result>  
+            <result name="input">
+                <param name="location">Budget.jsp</param>
+            </result>  
+            <result name="error">Signup.jsp</result>  
+        </action>
+        
+		<action name="addBudgetAction" class="budgetActionBean" method="create">
+	            <result name="input" >
+                	<param name="location">AddBudget.jsp</param>
+            	</result>
+	            <result name="success" type="redirect"> 
+	    			<param name="location">budgetAction.action</param> 
+	    		</result> 
+	    </action>
+	    
+	    <action name="editBudgetAction" class="budgetActionBean" method="update">
+             <result name="input" >
+               	<param name="location">AddBudget.jsp</param>
+           	 </result>  
+             <result name="success" type="redirect"> 
+    			<param name="location">budgetAction.action</param> 
+    		</result>   
+        </action>
+        
+        <action name="deleteBudgetAction" class="budgetActionBean" method="delete">  
+           	 <result name="input" >Budget.jsp</result>
+             <result name="success" type="redirect"> 
+    			<param name="location">budgetAction.action</param> 
+    		</result>
+        </action>          
+        
+        <action name="resetBudgetAction" class="budgetActionBean" method="reset">
+            <result name="input">
+                <param name="location">AddBudget.jsp</param>
+            </result>
+            <param name="clear">YES</param>
+        </action>
+        
+        
+        <action name="searchBudgetAction" class="budgetActionBean" method="search">
+            <result name="input">
+                <param name="location">Budget.jsp</param>
+            </result>
+            <result name="error">Signup.jsp</result>
+            <param name="search">ONE</param>
+        </action>
+        
+        <!-- ActionCode -->
+        <action name="actionCodeAction" class="actionCodeActionBean">
+            <result name="success">
+                <param name="location">ActionCode.jsp</param>
+            </result>  
+            <result name="input">
+                <param name="location">ActionCode.jsp</param>
+            </result>  
+            <result name="error">Signup.jsp</result>  
+        </action>
+        
+       <action name="addActionCodeAction" class="actionCodeActionBean" method="create">
+	            <result name="input" >
+                	<param name="location">AddActionCode.jsp</param>
+            	</result>
+	            <result name="success" type="redirect"> 
+	    			<param name="location">actionCodeAction.action</param> 
+	    		</result> 
+	    </action>
+	    
+	    <action name="editActionCodeAction" class="actionCodeActionBean" method="update">
+             <result name="input" >
+               	<param name="location">AddActionCode.jsp</param>
+           	 </result>  
+             <result name="success" type="redirect"> 
+    			<param name="location">actionCodeAction.action</param> 
+    		</result>   
+        </action>
+        
+        <action name="deleteActionCodeAction" class="actionCodeActionBean" method="delete">  
+           	 <result name="input">ActionCode.jsp</result>
+             <result name="success" type="redirect"> 
+    			<param name="location">actionCodeAction.action</param> 
+    		</result>
+        </action>          
+        
+        <action name="resetActionCodeAction" class="actionCodeActionBean" method="reset">
+            <result name="input">
+                <param name="location">AddActionCode.jsp</param>
+            </result>
+            <param name="clear">YES</param>
+        </action>
+        
+        <!-- Source Doc -->
+        <action name="sourceDocAction" class="sourceDocActionBean">
+            <result name="success">
+                <param name="location">SourceDocument.jsp</param>
+            </result>  
+            <result name="input">
+                <param name="location">SourceDocument.jsp</param>
+            </result>  
+            <result name="error">Signup.jsp</result>  
+            
+  <!--           <interceptor-ref name = "basicStack"/>
+			<interceptor-ref name = "fileUpload">
+			     <param name = "allowedTypes">image/jpeg,image/gif</param>
+			 </interceptor-ref> -->
+        </action>
+        
+       <action name="addSourceDocAction" class="sourceDocActionBean" method="create">
+         <!--  <interceptor-ref name = "basicStack"/>
+			<interceptor-ref name = "fileUpload">
+			     <param name = "allowedTypes">image/png,image/gif,image/jpeg</param>
+			 </interceptor-ref> -->
+			 
+	            <result name="input" >
+                	<param name="location">AddSourceDocument.jsp</param>
+            	</result>
+	            <result name="success" type="redirect"> 
+	    			<param name="location">sourceDocAction.action</param> 
+	    		</result> 
+	    		<param name="createsrc">YES</param>
+	    </action>
+	    
+	    <action name="editSourceDocAction" class="sourceDocActionBean" method="update">
+             <result name="input" >
+               	<param name="location">AddSourceDocument.jsp</param>
+           	 </result>  
+             <result name="success" type="redirect"> 
+    			<param name="location">sourceDocAction.action</param> 
+    		</result>
+    		<param name="createsrc">YES</param>   
+        </action>
+        
+        <action name="deleteSourceDocAction" class="sourceDocActionBean" method="delete">  
+           	 <result name="input">SourceDocument.jsp</result>
+             <result name="success" type="redirect"> 
+    			<param name="location">sourceDocAction.action</param> 
+    		</result>
+        </action>          
+        
+        <action name="resetSourceDocAction" class="sourceDocActionBean" method="reset">
+            <result name="input">
+                <param name="location">AddSourceDocument.jsp</param> <!-- sourceDocActionBean.jsp -->
+            </result>
+            <param name="clear">YES</param>
+        </action>
+        
+        
+        <action name="addSourceDocApprovalAction" class="sourceDocActionBean" method="addSourceDocApproval">
+<!--           	 <result>/SourceDocApprovals.jsp</result> -->
+           	 <result name="input">
+                <param name="location">SourceDocApprovals.jsp</param>
+            </result>
+            <param name="addTemp">YES</param>
+        </action>
+       
+       <!-- Delete selected approvals -->       
+       <action name="deleteSourceApprovalAction" class="sourceDocActionBean" method="deleteApprovals">  
+           	  <result name="input">
+                <param name="location">AddSourceDocument.jsp</param>
+              </result>
+              <param name="delete">YES</param>
+       </action>
+        
+        <action name="downloadSourceDocAction" class="sourceDocActionBean" method="download">  
+           	    <result name="success" type="stream">
+			      <param name="contentType">application/octet-stream</param>
+			      <param name="inputName">fileInputStream</param>
+			      <param name="contentDisposition">attachment;filename="${downloadFileName}</param>
+			      <param name="bufferSize">4096</param>
+			    </result>
+        </action>
+        
+        <!-- Pay Request -->
+	    <action name="paymentRequestAction" class="payRequestActionBean">
+	            <result name="input" >
+                	<param name="location">PaymentRequest.jsp</param>
+            	</result>
+            	<result name="error">Signup.jsp</result>
+	    </action>
+	    
+	    <!-- PR Step 01 submit -->
+	    <action name="callPRTabAction2" class="payRequestActionBean" method="callPRTab2">
+	            <result name="input" >
+                	<param name="location">PaymentRequest.jsp <!-- AddPayRequest.jsp --></param>
+            	</result>
+            	<result name="success" >
+                	<param name="location">PaymentRequest2.jsp <!-- AddPayRequest.jsp --></param>
+            	</result>
+            	<param name="save">two</param>
+	    </action>
+	    
+	    <!-- JQuery- Invoice load -->
+	    <action name="getStkSourceDocAction" class="payRequestActionBean" method="getStkSourceDoc">
+           	 <result name="input">
+                <param name="location">StakeholderSourceDoc.jsp</param>
+            </result>
+            <param name="save">two</param>
+        </action>
+        
+         <!-- Invoice load -->
+	    <action name="searchStkSourceDocAction" class="payRequestActionBean" method="getStkSourceDoc">
+           	 <result name="input">
+                <param name="location">PaymentRequest.jsp</param>
+            </result>
+            <param name="save">four</param>
+        </action>
+        
+        <action name="addPREntryAction" class="payRequestActionBean" method="addTempLedgerEntry">
+          	<result name="input">
+                <param name="location">PaymentRequest2.jsp <!-- AddPayRequest.jsp --></param> <!-- PRFAmounts.jsp -->
+            </result>
+            <param name="save">three</param>
+        </action>
+        
+        <!-- Delete Entry -->
+        <action name="delTempPREntryAction" class="payRequestActionBean" method="deleteTempLedgerEntry">
+          	<result name="input">
+                <param name="location">PaymentRequest2.jsp</param>
+            </result>
+          <!--   <result name="input" type="redirect"> 
+    			<param name="location">callPRTabAction2.action</param> 
+    		</result> --> 
+        </action>
+        
+        <!-- PR Create -->
+        <action name="addPayRequestAction" class="payRequestActionBean" method="create">
+	        	<result name="success">
+	                <param name="location">PaymentRequest.jsp</param>
+	            </result>  
+	            <result name="input">
+	                <param name="location">PaymentRequest2.jsp</param>
+	            </result>  
+	            <result name="error">Signup.jsp</result> 
+	            <param name="save">one</param> 
+	    </action>
+	    
+	    <!-- PR Update -->
+        <action name="editPayRequestAction" class="payRequestActionBean" method="create">
+	        	<result name="success">
+	                <param name="location">PaymentRequest.jsp</param>
+	            </result>  
+	            <result name="input">
+	                <param name="location">PaymentRequest2.jsp</param>
+	            </result>  
+	            <result name="error">Signup.jsp</result> 
+	            <param name="save">one</param> 
+	    </action>
+	    	
+	    <!-- PR send for Approval -->    
+	    <action name="sendPRApprovalAction" class="payRequestActionBean" method="sendPRforApproval">
+	        	<result name="success">
+	                <param name="location">PaymentRequest.jsp</param>
+	            </result>  
+	            <result name="input">
+	                <param name="location">PaymentRequest.jsp</param>
+	            </result>  
+	            <result name="error">Signup.jsp</result> 
+	    </action>
+	    
+	    <!-- PR Approval -->    
+	    <action name="approvePRAction" class="payRequestActionBean" method="approvePR">
+	        	<result name="success">
+	                <param name="location">PaymentRequest.jsp</param>
+	            </result>  
+	            <result name="input">
+	                <param name="location">PaymentRequest.jsp</param>
+	            </result>  
+	            <result name="error">Signup.jsp</result> 
+	    </action>
+	    
+	    <!-- PR Reject -->    
+	    <action name="rejectPRAction" class="payRequestActionBean" method="rejectPR">
+	        	<result name="success">
+	                <param name="location">PaymentRequest.jsp</param>
+	            </result>  
+	            <result name="input">
+	                <param name="location">PaymentRequest.jsp</param>
+	            </result>  
+	            <result name="error">Signup.jsp</result> 
+	    </action>
+	    
+	    <!-- PR Cancel -->    
+	    <action name="cancelPRAction" class="payRequestActionBean" method="cancelPR">
+	        	<result name="success">
+	                <param name="location">PaymentRequest.jsp</param>
+	            </result>  
+	            <result name="input">
+	                <param name="location">PaymentRequest.jsp</param>
+	            </result>  
+	            <result name="error">Signup.jsp</result> 
+	    </action>
+	    
+	    <!-- PR Go Back -->
+        <action name="goBackPREntryAction" class="payRequestActionBean" method="goBack">
+          	<result name="input">
+                <param name="location">PaymentRequest.jsp</param>
+            </result>
+        </action>
+   		
+   		<!-- Budget Inquiry-->
+        <action name="budgetInquiryAction" class="budgetInquiryActionBean">  
+            <result name="input">
+                <param name="location">BudgetInquiry.jsp</param>
+            </result> 
+            <result name="error">Signup.jsp</result>  
+            <!--  <result name="sucess" type="redirect">
+                <param name="location">excelAction.action</param>
+            </result> -->
+        </action>
+        
+         <action name="callBudgetInqAction" class="budgetInquiryActionBean" method="generateReport">  
+            <result name="input">
+                <param name="location">BudgetInquiry.jsp</param>
+            </result>  
+            <!--  <result name="sucess" type="redirect">
+                <param name="location">excelAction.action</param>
+            </result> -->
+        </action>
+        
+        <!-- Budget Code -->
+        <action name="budgetCodeAction" class="budgetCodeActionBean">
+            <result name="success">
+                <param name="location">BudgetCode.jsp</param>
+            </result>  
+            <result name="input">
+                <param name="location">BudgetCode.jsp</param>
+            </result>  
+            <result name="error">Signup.jsp</result>  
+        </action>
+        
+       <action name="addBudgetCodeAction" class="budgetCodeActionBean" method="create">
+	            <result name="input" >
+                	<param name="location">AddBudgetCode.jsp</param>
+            	</result>
+	            <result name="success" type="redirect"> 
+	    			<param name="location">budgetCodeAction.action</param> 
+	    		</result> 
+	    </action>
+	    
+	    <action name="editBudgetCodeAction" class="budgetCodeActionBean" method="update">
+             <result name="input" >
+               	<param name="location">AddBudgetCode.jsp</param>
+           	 </result>  
+             <result name="success" type="redirect"> 
+    			<param name="location">budgetCodeAction.action</param> 
+    		</result>   
+        </action>
+        
+        <action name="deleteBudgetCodeAction" class="budgetCodeActionBean" method="delete">  
+           	 <result name="input">BudgetCode.jsp</result>
+             <result name="success" type="redirect"> 
+    			<param name="location">budgetCodeAction.action</param> 
+    		</result>
+        </action>          
+        
+        <action name="resetBudgetCodeAction" class="budgetCodeActionBean" method="reset">
+            <result name="input">
+                <param name="location">AddBudgetCode.jsp</param>
+            </result>
+            <param name="clear">YES</param>
+        </action>
+        
+       <!-- Ajax -->
+        <action name="ajaxAction" class="ajaxActionBean">
+             <result type="json">/BudgetInquiry.jsp</result>
+			 <!--<result type="json"><param name="root">result</param></result> -->            
+        </action>
+        
+       <!-- Payment Summary Report -->
+       <action name="paymentInquiryAction" class="paymentInquiryActionBean">  
+            <result name="input">
+                <param name="location">PaymentInquiry.jsp</param>
+            </result>
+            <result name="error">Signup.jsp</result>  
+             <!-- <result name="sucess" type="redirect">
+                <param name="location">excelAction.action</param>
+            </result> -->
+       </action>
+       
+       <action name="callPaymentInqAction" class="paymentInquiryActionBean" method="generateReport">  
+            <result name="input">
+                <param name="location">PaymentInquiry.jsp</param>
+            </result>  
+        </action>
+               
+       <!-- Daily Report -->
+       <action name="dailyReportAction" class="dailyReportActionBean">  
+            <result name="input">
+                <param name="location">DailyReport.jsp</param>
+            </result>  
+            <result name="error">Signup.jsp</result>
+        </action>
+        
+        <action name="callDailyInqAction" class="dailyReportActionBean" method="generateReport">  
+            <result name="input">
+                <param name="location">DailyReport.jsp</param>
+            </result>  
+        </action>
+        
+        <!-- Not used -->
+        <action name="excelAction" class="excelActionBean">
+          	<result name="input">
+                <param name="location">/BudgetInquiry.jsp</param>
+            </result> 
+         <!--    <result name="excel" type="stream">  
+                <param name="contentType">  
+                    application/vnd.ms-excel  
+                </param>  
+                <param name="inputName">excelStream</param>  
+                <param name="contentDisposition">  
+                    filename="export.xls"  
+                </param>  
+                <param name="bufferSize">1024</param>  
+            </result>   -->
+        </action>
+        
+        <!-- Report -->
+      <!--   <result-types>
+            <result-type name="jasper1" class="jasperReportActionBean"/>
+       </result-types>
+       
+        <action name="budgetReportAction" class="budgetReportActionBean">
+	        <result name="success" type="jasper1">
+	            <param name="parameters">param</param>
+	            <param name="rptFormat">rptFmt</param>
+	        </result>
+        </action> -->
+        
+        <!-- PR Explorer -->
+        <action name="prExplorerAction" class="prExplorerActionBean">  
+            <result name="input">
+                <param name="location">PRExplorer.jsp</param>
+            </result>  
+            <result name="error">Signup.jsp</result>
+            <param name="clear">YES</param>
+        </action>
+        
+         <action name="searchPRAction" class="prExplorerActionBean" method="search">  
+            <result name="success">
+                <param name="location">PRSearchGrid.jsp<!-- PRExplorer.jsp --></param>
+            </result>
+            <result name="input">
+                <param name="location">PRExplorer.jsp<!-- PRExplorer.jsp --></param>
+            </result>  
+            <result name="error">/Signup.jsp</result>
+        </action>
+        
+        <action name="goBackPRExplore" class="prExplorerActionBean" method="goBack">  
+            <result name="success">
+                <param name="location">PRExplorer.jsp</param>
+            </result>
+            <result name="input">
+                <param name="location">PRSearchGrid.jsp</param>
+            </result>  
+            <result name="error">/Signup.jsp</result>
+        </action>
+        
+        <action name="editPRAction" class="payRequestActionBean" method="update">  
+  			<result name="input" >
+               	<param name="location">searchPRAction.action</param>
+           	 </result>  
+             <result name="success"> 
+    			<param name="location">PaymentRequest.jsp</param> 
+    		</result> 
+    	</action> 
+    	
+    	<action name="dashboardAction" class="dashboardActionBean">  
+  			<result name="input" >
+               	<param name="location">DashboardView.jsp</param>
+           	 </result>  
+          <result name="success" >
+               	<param name="location">DashboardView.jsp</param>
+           	 </result>
+           	 <result name="error">/Signup.jsp</result>
+    	</action> 
+		
+		<action name="getBudetTypeChratAction" class="dashboardChartActionBean" >
+			<result name="success" type="json"></result>
+			<result name="input">/Signup.jsp</result>
+			<result name="error">/Signup.jsp</result>
+		</action>
+		
+		<!-- Chart page loading-->
+		<action name="chartAction" class="chartActionBean">  
+  			<result name="input" >
+               	<param name="location">ChartView.jsp</param>
+           	 </result>  
+    	</action> 
+    	
+    	<action name="getMonthBudgetChratAction" class="chartActionBean" method="getMonthBudgetChart">
+			<result name="success" type="json"></result>
+			<result name="input">ChartView.jsp</result>
+		</action>
+		
+	   <!-- User-->
+    	<action name="userManageAction" class="userActionBean">
+            <result name="success">
+                <param name="location">UserManage.jsp</param>
+            </result>  
+            <result name="input">
+                <param name="location">UserManage.jsp</param>
+            </result>  
+            <result name="error">Signup.jsp</result>  
+        </action>
+        
+ 	</package>
+ </struts>

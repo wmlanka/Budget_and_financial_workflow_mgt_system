@@ -1,0 +1,172 @@
+@charset "ISO-8859-1";
+
+.closebtn {
+  color: black;
+  font-weight: bold;
+  float: right;
+  font-size: 22px;
+  line-height: 20px;
+  cursor: pointer;
+  transition: 0.3s;
+}
+
+.closebtn:hover {
+  color: black;
+}
+
+.alert-box {
+    /* color:#5cb85c; *//* #008080;  #555; */
+    border-radius:10px;
+    font-family:Tahoma,Geneva,Arial,sans-serif;font-size:12px;
+    padding:10px 10px 10px 36px;
+    margin:10px;
+    width: 85%;
+}
+
+.alert-box span {
+    font-weight:bold;
+    text-transform:uppercase;
+}
+
+.error {
+    background:#ffecec url('images/error.png') no-repeat 10px 50%;
+    border:1px solid #f5aca6;
+    color:#d9534f;
+}
+.success {
+    background:#e9ffd9 url('images/success.png') no-repeat 10px 50%;
+    border:1px solid #a6ca8a;
+    color: #270;
+}
+.warning {
+    background:#fff8c4 url('images/warning.png') no-repeat 10px 50%;
+    border:1px solid #f2c779;
+    color: #9F6000;
+}
+.notice {
+    background:#e3f7fc url('images/notice.png') no-repeat 10px 50%;
+    border:1px solid #8ed9f6;
+    color:  #059;
+}
+
+/* field error change default settings */
+.errorMessage {
+  color: green;
+  font-size: 14px;
+  font-weight: 500;
+/*   display: none;
+ */  /* font-family: sans-serif; */
+}
+
+/* field error */
+.myErrorMessage {
+  color: #d9534f;/*  red; */
+  font-size: 13px;
+  font-weight: 500;
+  /* font-family: sans-serif; */
+}
+
+.img-stakeholder{
+	background-image: url('../images/user.jpg');
+	background-repeat:no-repeat;
+	background-size:60px 60px;
+	width: 60px; height: 60px;
+	padding-left: 55px;
+}
+
+.img-ledgerAccount{
+	background-image: url('../images/ledger.jpg');
+	background-repeat:no-repeat;
+	background-size:60px 60px;
+	padding-left: 55px;
+}
+
+.img-approval{
+	background-image: url('../images/approved.jpg');
+	background-repeat:no-repeat;
+	background-size:70px 70px;
+	padding-left: 55px;
+}
+
+.img-budget{
+	background-image: url('../images/budget.png');
+	background-repeat:no-repeat;
+	background-size:60px 60px;
+	padding-left: 60px;
+}
+
+.img-invoice{
+	background-image: url('../images/invoice.jpg');
+	background-repeat:no-repeat;
+	background-size:60px 60px;
+	padding-left: 65px;
+}
+
+.img-payment{
+	background-image: url('../images/payment.jpg');
+	background-repeat:no-repeat;
+	background-size:60px 50px;
+	padding-left: 65px;
+}
+
+.img-search{
+	background-image: url('../images/search.jpg');
+	background-repeat:no-repeat;
+	background-size:60px 50px;
+	padding-left: 65px;
+}
+
+.img-approved{
+	background-image: url('../images/payment.jpg');
+	background-repeat:no-repeat;
+	background-size:60px 50px;
+	width: 60px; height: 50px;
+	padding-left: 65px;
+}
+
+.img-rejected{
+	background-image: url('../images/rejected.jpg');
+	background-repeat:no-repeat;
+	background-size:50px 50px;
+	width: 50px; height: 50px;
+	padding-left: 60px;
+}
+
+.img-pending{
+	background-image: url('../images/pending2.jpg');
+	background-repeat:no-repeat;
+	background-size:60px 65px;
+	width: 60px; height: 55px;
+	padding-left: 65px;
+}
+
+.img-report{
+	background-image: url('../images/report.jpg');
+	background-repeat:no-repeat;
+	background-size:60px 60px;
+	width: 60px; height: 60px;
+	padding-left: 65px;
+}
+
+.img-inviceDash{
+	background-image: url('../images/pendingInv.jpg');
+	background-repeat:no-repeat;
+	background-size:50px 50px;
+	width: 50px; height: 50px;
+	padding-left: 55px;
+}
+
+.img-userManage{
+    background-image: url('../images/userm.jpg');
+	background-repeat:no-repeat;
+	background-size:60px 60px;
+	width: 60px; height: 60px;
+	padding-left: 55px;
+}
+
+.disabledbutton {
+    pointer-events: none;
+    opacity: 0.4;
+}
+
+
